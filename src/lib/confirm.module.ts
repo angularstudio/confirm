@@ -1,12 +1,20 @@
-import { NgModule } from '@angular/core';
+import { ButtonsModule }    from '@angular.studio/buttons';
+import { DialogModule }     from '@angular.studio/dialog';
+import { NgModule }         from '@angular/core';
 import { ConfirmComponent } from './confirm.component';
 
-
-
 @NgModule({
-  declarations: [ConfirmComponent],
-  imports: [
-  ],
-  exports: [ConfirmComponent]
+
+    declarations: [ ConfirmComponent ],
+    imports: [
+
+        ButtonsModule,
+        DialogModule
+
+    ],
+    exports: [ ConfirmComponent ],
+    entryComponents: [ ConfirmComponent ]
+
 })
-export class ConfirmModule { }
+export class ConfirmModule {
+}

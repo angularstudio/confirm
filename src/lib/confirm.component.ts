@@ -1,15 +1,23 @@
-import { Component, Input } from '@angular/core';
-import { Confirm }          from './confirm';
+import { DialogService }        from '@angular.studio/dialog';
+import { Component }            from '@angular/core';
+import { ConfirmConfigService } from './confirm-config.service';
 
 @Component({
 
     selector: 'confirm',
     template: `
 
-        <div class="wrapper">
+        <dialogs id="confirm" (nextClick)="onNextClick()">
 
+            <div class="wrapper">
 
-        </div>
+                <div class="message"
+                     [style.color]="confirmConfigService.config.messageFontColor"
+                     [style.font-size]="confirmConfigService.config.messageFontSize">{{ confirmConfigService.config.message }}</div>
+
+            </div>
+
+        </dialogs>
 
     `,
     styleUrls: [ 'confirm.component.scss' ]
@@ -17,6 +25,17 @@ import { Confirm }          from './confirm';
 })
 export class ConfirmComponent {
 
-    @Input() public config: Confirm;
+    public constructor(public readonly confirmConfigService: ConfirmConfigService,
+                       private readonly dialogService: DialogService) {
+
+    }
+
+    public onNextClick(): void {
+
+        this.confirmConfigService.click$.next(true);
+
+        this.dialogService.close('confirm');
+
+    }
 
 }

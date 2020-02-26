@@ -5,4 +5,5 @@
 export * from './lib/confirm.service';
 export * from './lib/confirm.component';
 export * from './lib/confirm.module';
+export * from './lib/confirm-config.service';
 export * from './lib/confirm';
